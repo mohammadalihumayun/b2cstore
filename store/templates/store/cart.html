@@ -1,0 +1,22 @@
+<h2>Your Cart</h2>
+
+{% for item in items %}
+    <p>
+        {{ item.product.name }} |
+        Qty: {{ item.qty }} |
+        Rs {{ item.subtotal }}
+    </p>
+{% endfor %}
+
+<h3>Total: Rs {{ total }}</h3>
+
+<a href="/">Continue Shopping</a>
+
+
+<br><br>
+
+<a href="{% url 'checkout' %}">
+    <button style="padding:10px 15px; background:green; color:white; border:none;">
+        Proceed to Checkout
+    </button>
+</a>

@@ -1,0 +1,40 @@
+<h2>Checkout</h2>
+
+<h3>Order Summary</h3>
+
+{% for item in items %}
+    <p>
+        {{ item.product.name }} |
+        Qty: {{ item.qty }} |
+        Rs {{ item.subtotal }}
+    </p>
+{% endfor %}
+
+<h3>Total: Rs {{ total }}</h3>
+
+<hr>
+
+<h3>Delivery Details</h3>
+
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+        Name:<br>
+        <input type="text" name="name" required>
+    </p>
+
+    <p>
+        Address:<br>
+        <textarea name="address" required></textarea>
+    </p>
+
+    <p>
+        Phone:<br>
+        <input type="text" name="phone" required>
+    </p>
+
+    <button type="submit" style="padding:10px 15px;">
+        Place Order
+    </button>
+</form>

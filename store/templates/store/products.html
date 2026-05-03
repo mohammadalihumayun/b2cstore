@@ -1,9 +1,27 @@
-<h1>Superstore</h1>
+<h1>All Products</h1>
 
-{% for p in products %}
-  <div style="border:1px solid black; margin:10px; padding:10px;">
-    <h3>{{ p.name }}</h3>
-    <p>Price: {{ p.price }}</p>
-    <p>{{ p.description }}</p>
-  </div>
+<a href="{% url 'cart_view' %}">🛒 View Cart</a>
+
+<hr>
+
+{% for product in products %}
+    <div style="border:1px solid #ddd; padding:10px; margin-bottom:10px;">
+        
+        <h3>{{ product.name }}</h3>
+        <p>Price: Rs {{ product.price }}</p>
+
+        <!-- Link to product detail page -->
+        <a href="{% url 'product_detail' product.id %}">
+            View Details
+        </a>
+
+        <!-- Add to cart -->
+        <br><br>
+        <a href="{% url 'add_to_cart' product.id %}">
+            Add to Cart
+        </a>
+
+    </div>
+{% empty %}
+    <p>No products available.</p>
 {% endfor %}
